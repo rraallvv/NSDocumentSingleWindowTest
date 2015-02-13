@@ -71,22 +71,23 @@ static id aInstance;
     // TODO: Return current active document
     NSDocument *doc = nil;
     
-    NSTextField *tv = [self activeTextField];
+    NSTextView *tv = [self activeTextView];
     
-    if (tv == self.textFieldDocument) {
+    if (tv == self.textViewDocument) {
         doc = m_doc;
     }
     
     return doc;
 }
 
--(NSTextField*)activeTextField
+-(NSTextView*)activeTextView
 {
-    NSResponder *firstResponder = [[NSApp keyWindow] firstResponder];
-    
-    if ([firstResponder isKindOfClass:[NSText class]]) {
-        if ([(NSText *)firstResponder delegate] == self.textFieldDocument) {
-            return self.textFieldDocument;
+    NSResponder *firstResponder = [[self.textViewDocument window] firstResponder];
+
+    if ([firstResponder isKindOfClass:[NSTextView class]]) {
+		
+		if ([(NSTextView *)firstResponder delegate] == [self.textViewDocument delegate]) {
+			return self.textViewDocument;
         }
     }
     
@@ -112,13 +113,13 @@ static id aInstance;
 
 -(void)addDocument:(LMDocument*)docToAdd
 {
-    NSTextField *tv = [self activeTextField];
+    NSTextView *tv = [self activeTextView];
     
     LMDocument *closeDoc = nil;
     
     if (!tv) {
         closeDoc = m_doc;
-        tv = self.textFieldDocument;
+        tv = self.textViewDocument;
     } else {
         closeDoc = [self document];
     }
@@ -130,11 +131,11 @@ static id aInstance;
     // !!!  It's very important to do this before adding the document to the NSArray because Cocoa calls document on NSWindowController to see if there has been a document assigned to this window controller already. if so, it doesn't add the window controller to the NSDocument  !!!
     [docToAdd addWindowController:self];
     
-    if (tv == self.textFieldDocument) {
+    if (tv == self.textViewDocument) {
         m_doc = [docToAdd retain];
     }
 
-    [tv setStringValue:docToAdd.dataInMemory];
+    [tv setString:docToAdd.dataInMemory];
     [self setActiveDocument];
 
     //[lmDoc setWindow:self.window];
@@ -155,10 +156,10 @@ static id aInstance;
         [self close];
     }
     
-    NSTextField *tv = nil;
+    NSTextView *tv = nil;
     
     if (m_doc == docToRemove) {
-        tv = self.textFieldDocument;
+        tv = self.textViewDocument;
         
         if (m_doc) {
             [m_doc release];
@@ -166,7 +167,7 @@ static id aInstance;
         }
     }
     
-    [tv setStringValue:@""];
+    [tv setString:@""];
     
     [self setActiveDocument];
     
@@ -193,16 +194,16 @@ static id aInstance;
 
 - (void)controlTextDidChange:(NSNotification *)notification
 {
-    NSTextField *textField = [notification object];
+    NSTextView *textField = [notification object];
     
     LMDocument *doc = nil;
     
-    if (textField == self.textFieldDocument) {
+    if (textField == self.textViewDocument) {
         doc = m_doc;
     }
 
     if (doc) {
-        doc.dataInMemory = [textField stringValue];
+        doc.dataInMemory = [textField string];
         
         BOOL hasChanges = [doc hasChanges];
         

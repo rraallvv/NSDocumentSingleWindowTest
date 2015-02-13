@@ -13,6 +13,6 @@
 +(id)instance;
 - (IBAction)closeDocument:(id)sender;
 
-@property (assign) IBOutlet NSTextField *textFieldDocument;
+@property (assign) IBOutlet NSTextView *textViewDocument;
 
 @end
