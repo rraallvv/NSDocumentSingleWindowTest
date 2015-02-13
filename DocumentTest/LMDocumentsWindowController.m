@@ -15,8 +15,8 @@ static id aInstance;
 @end
 
 @implementation LMDocumentsWindowController {
-    LMDocument *m_doc;
-    BOOL m_closeCalledInternally;
+    LMDocument *_doc;
+    BOOL _closeCalledInternally;
 }
 
 -(void)awakeFromNib
@@ -26,7 +26,7 @@ static id aInstance;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentNeedsWindow:) name:LMDocumentNeedWindowNotification object:nil];
     [self setActiveDocument];
     
-    m_closeCalledInternally = NO;
+    _closeCalledInternally = NO;
 }
 
 +(id)instance
@@ -41,9 +41,9 @@ static id aInstance;
 
 - (void)dealloc
 {
-    if (m_doc) {
-        [m_doc release];
-        m_doc = nil;
+    if (_doc) {
+        [_doc release];
+        _doc = nil;
     }
 
     [super dealloc];
@@ -74,7 +74,7 @@ static id aInstance;
     NSTextView *tv = [self activeTextView];
     
     if (tv == self.textViewDocument) {
-        doc = m_doc;
+        doc = _doc;
     }
     
     return doc;
@@ -118,7 +118,7 @@ static id aInstance;
     LMDocument *closeDoc = nil;
     
     if (!tv) {
-        closeDoc = m_doc;
+        closeDoc = _doc;
         tv = self.textViewDocument;
     } else {
         closeDoc = [self document];
@@ -132,7 +132,7 @@ static id aInstance;
     [docToAdd addWindowController:self];
     
     if (tv == self.textViewDocument) {
-        m_doc = [docToAdd retain];
+        _doc = [docToAdd retain];
     }
 
     [tv setString:docToAdd.dataInMemory];
@@ -152,18 +152,18 @@ static id aInstance;
     // TODO: Remove any views related to the doc
     
     if (!docToRemove) {
-        m_closeCalledInternally = YES;
+        _closeCalledInternally = YES;
         [self close];
     }
     
     NSTextView *tv = nil;
     
-    if (m_doc == docToRemove) {
+    if (_doc == docToRemove) {
         tv = self.textViewDocument;
         
-        if (m_doc) {
-            [m_doc release];
-            m_doc = nil;
+        if (_doc) {
+            [_doc release];
+            _doc = nil;
         }
     }
     
@@ -184,8 +184,8 @@ static id aInstance;
     // TODO: Clean up any views related to documents
     
     // disassociate this window controller from the document
-    if (m_doc) {
-        [m_doc removeWindowController:self];
+    if (_doc) {
+        [_doc removeWindowController:self];
     }
     
     // then any content view
@@ -199,7 +199,7 @@ static id aInstance;
     LMDocument *doc = nil;
     
     if (textField == self.textViewDocument) {
-        doc = m_doc;
+        doc = _doc;
     }
 
     if (doc) {
@@ -222,8 +222,8 @@ static id aInstance;
 
 - (void)close
 {
-    if (m_closeCalledInternally) {
-        m_closeCalledInternally = NO;
+    if (_closeCalledInternally) {
+        _closeCalledInternally = NO;
         [super close];
     }
 }

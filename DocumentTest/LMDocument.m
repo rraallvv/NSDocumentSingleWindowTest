@@ -12,8 +12,8 @@
 NSString* const LMDocumentNeedWindowNotification = @"LMDocumentNeedWindowNotification";
 
 @implementation LMDocument {
-    NSString* m_dataInMemory;
-    NSString* m_dataFromLoad;
+    NSString* _dataInMemory;
+    NSString* _dataFromLoad;
 }
 
 - (id)init
@@ -21,21 +21,21 @@ NSString* const LMDocumentNeedWindowNotification = @"LMDocumentNeedWindowNotific
     self = [super init];
     if (self) {
         self.dataInMemory = @"";
-        m_dataFromLoad = [self.dataInMemory copy];
+        _dataFromLoad = [self.dataInMemory copy];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    if (m_dataInMemory) {
-        [m_dataInMemory release];
-        m_dataInMemory = nil;
+    if (_dataInMemory) {
+        [_dataInMemory release];
+        _dataInMemory = nil;
     }
     
-    if (m_dataFromLoad) {
-        [m_dataFromLoad release];
-        m_dataFromLoad = nil;
+    if (_dataFromLoad) {
+        [_dataFromLoad release];
+        _dataFromLoad = nil;
     }
     
     [super dealloc];
@@ -43,12 +43,12 @@ NSString* const LMDocumentNeedWindowNotification = @"LMDocumentNeedWindowNotific
 
 -(void)setDataInMemory:(NSString *)aDataInMemory
 {
-    m_dataInMemory = [aDataInMemory retain];
+    _dataInMemory = [aDataInMemory retain];
 }
 
 -(NSString*)dataInMemory
 {
-    return m_dataInMemory;
+    return _dataInMemory;
 }
 
 -(void)makeWindowControllers
@@ -84,12 +84,12 @@ NSString* const LMDocumentNeedWindowNotification = @"LMDocumentNeedWindowNotific
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
     // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
     
-    if (m_dataFromLoad) {
-        [m_dataFromLoad release];
-        m_dataFromLoad = nil;
+    if (_dataFromLoad) {
+        [_dataFromLoad release];
+        _dataFromLoad = nil;
     }
     
-    m_dataFromLoad = [m_dataInMemory copy];
+    _dataFromLoad = [_dataInMemory copy];
     
     return [[self dataInMemory] dataUsingEncoding:NSUTF8StringEncoding];
 }
@@ -101,14 +101,14 @@ NSString* const LMDocumentNeedWindowNotification = @"LMDocumentNeedWindowNotific
     // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
     
     [self setDataInMemory:[[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease]];
-    m_dataFromLoad = [m_dataInMemory copy];
+    _dataFromLoad = [_dataInMemory copy];
     
     return YES;
 }
 
 - (BOOL)hasChanges
 {
-    return ![m_dataInMemory isEqualToString:m_dataFromLoad];
+    return ![_dataInMemory isEqualToString:_dataFromLoad];
 }
 
 - (void)close
