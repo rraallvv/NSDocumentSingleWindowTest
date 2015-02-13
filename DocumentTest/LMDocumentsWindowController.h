@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMDocumentsWindowController : NSWindowController
+@interface LMDocumentsWindowController : NSWindowController<NSTextViewDelegate>
 
 +(id)instance;
 - (IBAction)closeDocument:(id)sender;

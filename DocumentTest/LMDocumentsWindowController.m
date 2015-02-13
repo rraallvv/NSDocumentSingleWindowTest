@@ -192,18 +192,19 @@ static id aInstance;
     [window setContentView:nil];
 }
 
-- (void)controlTextDidChange:(NSNotification *)notification
+
+- (void)textDidChange:(NSNotification *)notification
 {
-    NSTextView *textField = [notification object];
+    NSTextView *textView = [notification object];
     
     LMDocument *doc = nil;
     
-    if (textField == self.textViewDocument) {
+    if (textView == self.textViewDocument) {
         doc = _doc;
     }
 
     if (doc) {
-        doc.dataInMemory = [textField string];
+        doc.dataInMemory = [textView string];
         
         BOOL hasChanges = [doc hasChanges];
         
@@ -215,7 +216,7 @@ static id aInstance;
     }
 }
 
-- (void)controlTextDidEndEditing:(NSNotification *)aNotification
+- (void)textDidEndEditing:(NSNotification *)notification
 {
     [self setActiveDocument];
 }
