@@ -1,5 +1,5 @@
 //
-//  LMMultipleDocumentsWindowController.h
+//  LMDocumentsWindowController.h
 //  DocumentTest
 //
 //  Created by Felix Deimel on 07/11/13.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMMultipleDocumentsWindowController : NSWindowController
+@interface LMDocumentsWindowController : NSWindowController
 
 +(id)instance;
 - (IBAction)closeDocument:(id)sender;

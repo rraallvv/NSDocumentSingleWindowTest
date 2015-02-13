@@ -7,7 +7,9 @@
 //
 
 #import "LMDocument.h"
-#import "LMMultipleDocumentsWindowController.h"
+#import "LMDocumentsWindowController.h"
+
+NSString* const LMDocumentNeedWindowNotification = @"LMDocumentNeedWindowNotification";
 
 @implementation LMDocument {
     NSString* m_dataInMemory;
@@ -53,7 +55,7 @@
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:LMDocumentNeedWindowNotification object:self];
     
-    /* LMMultipleDocumentsWindowController *wc = [[LMMultipleDocumentsWindowController alloc] initWithWindowNibName:@"LMMultipleDocumentsWindow"];
+    /* LMDocumentsWindowController *wc = [[LMDocumentsWindowController alloc] initWithWindowNibName:@"LMMultipleDocumentsWindow"];
 
     //[wc addDocument:self];
 
