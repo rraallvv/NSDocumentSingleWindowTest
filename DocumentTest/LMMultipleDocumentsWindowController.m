@@ -15,8 +15,7 @@ static id aInstance;
 @end
 
 @implementation LMMultipleDocumentsWindowController {
-    LMDocument *m_doc1;
-    LMDocument *m_doc2;
+    LMDocument *m_doc;
     BOOL m_closeCalledInternally;
 }
 
@@ -42,16 +41,11 @@ static id aInstance;
 
 - (void)dealloc
 {
-    if (m_doc1) {
-        [m_doc1 release];
-        m_doc1 = nil;
+    if (m_doc) {
+        [m_doc release];
+        m_doc = nil;
     }
-    
-    if (m_doc2) {
-        [m_doc2 release];
-        m_doc2 = nil;
-    }
-    
+
     [super dealloc];
 }
 
@@ -79,10 +73,8 @@ static id aInstance;
     
     NSTextField *tv = [self activeTextField];
     
-    if (tv == self.textFieldDocument1) {
-        doc = m_doc1;
-    } else if (tv == self.textFieldDocument2) {
-        doc = m_doc2;
+    if (tv == self.textFieldDocument) {
+        doc = m_doc;
     }
     
     return doc;
@@ -93,10 +85,8 @@ static id aInstance;
     NSResponder *firstResponder = [[NSApp keyWindow] firstResponder];
     
     if ([firstResponder isKindOfClass:[NSText class]]) {
-        if ([(NSText *)firstResponder delegate] == self.textFieldDocument1) {
-            return self.textFieldDocument1;
-        } else if ([(NSText *)firstResponder delegate] == self.textFieldDocument2) {
-            return self.textFieldDocument2;
+        if ([(NSText *)firstResponder delegate] == self.textFieldDocument) {
+            return self.textFieldDocument;
         }
     }
     
@@ -127,8 +117,8 @@ static id aInstance;
     LMDocument *closeDoc = nil;
     
     if (!tv) {
-        closeDoc = m_doc1;
-        tv = self.textFieldDocument1;
+        closeDoc = m_doc;
+        tv = self.textFieldDocument;
     } else {
         closeDoc = [self document];
     }
@@ -140,12 +130,10 @@ static id aInstance;
     // !!!  It's very important to do this before adding the document to the NSArray because Cocoa calls document on NSWindowController to see if there has been a document assigned to this window controller already. if so, it doesn't add the window controller to the NSDocument  !!!
     [docToAdd addWindowController:self];
     
-    if (tv == self.textFieldDocument1) {
-        m_doc1 = [docToAdd retain];
-    } else if (tv == self.textFieldDocument2) {
-        m_doc2 = [docToAdd retain];
+    if (tv == self.textFieldDocument) {
+        m_doc = [docToAdd retain];
     }
-    
+
     [tv setStringValue:docToAdd.dataInMemory];
     [self setActiveDocument];
 
@@ -169,19 +157,12 @@ static id aInstance;
     
     NSTextField *tv = nil;
     
-    if (m_doc1 == docToRemove) {
-        tv = self.textFieldDocument1;
+    if (m_doc == docToRemove) {
+        tv = self.textFieldDocument;
         
-        if (m_doc1) {
-            [m_doc1 release];
-            m_doc1 = nil;
-        }
-    } else if (m_doc2 == docToRemove) {
-        tv = self.textFieldDocument2;
-        
-        if (m_doc2) {
-            [m_doc2 release];
-            m_doc2 = nil;
+        if (m_doc) {
+            [m_doc release];
+            m_doc = nil;
         }
     }
     
@@ -202,13 +183,10 @@ static id aInstance;
     // TODO: Clean up any views related to documents
     
     // disassociate this window controller from the document
-    if (m_doc1) {
-        [m_doc1 removeWindowController:self];
+    if (m_doc) {
+        [m_doc removeWindowController:self];
     }
     
-    if (m_doc2) {
-        [m_doc2 removeWindowController:self];
-    }
     // then any content view
     [window setContentView:nil];
 }
@@ -219,12 +197,10 @@ static id aInstance;
     
     LMDocument *doc = nil;
     
-    if (textField == self.textFieldDocument1) {
-        doc = m_doc1;
-    } else if (textField == self.textFieldDocument2) {
-        doc = m_doc2;
+    if (textField == self.textFieldDocument) {
+        doc = m_doc;
     }
-    
+
     if (doc) {
         doc.dataInMemory = [textField stringValue];
         

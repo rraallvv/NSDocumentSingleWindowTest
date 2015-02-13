@@ -13,7 +13,6 @@
 +(id)instance;
 - (IBAction)closeDocument:(id)sender;
 
-@property (assign) IBOutlet NSTextField *textFieldDocument1;
-@property (assign) IBOutlet NSTextField *textFieldDocument2;
+@property (assign) IBOutlet NSTextField *textFieldDocument;
 
 @end
