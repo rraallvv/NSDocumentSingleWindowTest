@@ -67,44 +67,14 @@ static id aInstance;
 
 -(NSDocument*)document
 {
-    // TODO: Return current active document
-    NSDocument *doc = nil;
-    
-    NSTextView *tv = [self activeTextView];
-    
-    if (tv == self.textViewDocument) {
-        doc = _doc;
-    }
-    
-    return doc;
-}
-
--(NSTextView*)activeTextView
-{
-    NSResponder *firstResponder = [[self.textViewDocument window] firstResponder];
-
-    if ([firstResponder isKindOfClass:[NSTextView class]]) {
-		
-		if ([(NSTextView *)firstResponder delegate] == [self.textViewDocument delegate]) {
-			return self.textViewDocument;
-        }
-    }
-    
-    return nil;
+    return _doc;
 }
 
 -(void)addDocument:(LMDocument*)docToAdd
 {
-    NSTextView *tv = [self activeTextView];
-    
     LMDocument *closeDoc = nil;
     
-    if (!tv) {
-        closeDoc = _doc;
-        tv = self.textViewDocument;
-    } else {
-        closeDoc = [self document];
-    }
+	closeDoc = [self document];
     
     if (closeDoc) {
         [self closeDocument:closeDoc];
@@ -113,11 +83,9 @@ static id aInstance;
     // !!!  It's very important to do this before adding the document to the NSArray because Cocoa calls document on NSWindowController to see if there has been a document assigned to this window controller already. if so, it doesn't add the window controller to the NSDocument  !!!
     [docToAdd addWindowController:self];
     
-    if (tv == self.textViewDocument) {
-        _doc = [docToAdd retain];
-    }
+	_doc = [docToAdd retain];
 
-    [tv setString:docToAdd.dataInMemory];
+    [self.textViewDocument setString:docToAdd.dataInMemory];
 	[self setDocument: self.document];
 
     //[lmDoc setWindow:self.window];
