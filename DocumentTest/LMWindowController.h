@@ -1,5 +1,5 @@
 //
-//  LMDocumentsWindowController.h
+//  LMWindowController.h
 //  DocumentTest
 //
 //  Created by Felix Deimel on 07/11/13.
@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "LMDocument.h"
 
-@interface LMDocumentsWindowController : NSWindowController<NSTextViewDelegate>
+@interface LMWindowController : NSWindowController<NSTextViewDelegate>
 
 +(id)instance;
 - (IBAction)closeDocument:(id)sender;

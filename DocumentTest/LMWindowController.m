@@ -1,20 +1,20 @@
 //
-//  LMDocumentsWindowController.m
+//  LMWindowController.m
 //  DocumentTest
 //
 //  Created by Felix Deimel on 07/11/13.
 //  Copyright (c) 2013 Felix Deimel. All rights reserved.
 //
 
-#import "LMDocumentsWindowController.h"
+#import "LMWindowController.h"
 #import "LMDocument.h"
 
 static id aInstance;
 
-@interface LMDocumentsWindowController ()
+@interface LMWindowController ()
 @end
 
-@implementation LMDocumentsWindowController {
+@implementation LMWindowController {
     LMDocument *_doc;
     BOOL _closeCalledInternally;
 }

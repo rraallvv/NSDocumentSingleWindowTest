@@ -13,7 +13,7 @@
 		E72E1978182B1E1B00B1708E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E72E1977182B1E1B00B1708E /* main.m */; };
 		E72E197F182B1E1B00B1708E /* LMDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = E72E197E182B1E1B00B1708E /* LMDocument.m */; };
 		E72E1985182B1E1B00B1708E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E72E1983182B1E1B00B1708E /* MainMenu.xib */; };
-		E72E198E182B21FE00B1708E /* LMDocumentsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72E198C182B21FE00B1708E /* LMDocumentsWindowController.m */; };
+		E72E198E182B21FE00B1708E /* LMWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72E198C182B21FE00B1708E /* LMWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,8 +31,8 @@
 		E72E197D182B1E1B00B1708E /* LMDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LMDocument.h; sourceTree = "<group>"; };
 		E72E197E182B1E1B00B1708E /* LMDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LMDocument.m; sourceTree = "<group>"; };
 		E72E1984182B1E1B00B1708E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		E72E198B182B21FE00B1708E /* LMDocumentsWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMDocumentsWindowController.h; sourceTree = "<group>"; };
-		E72E198C182B21FE00B1708E /* LMDocumentsWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMDocumentsWindowController.m; sourceTree = "<group>"; };
+		E72E198B182B21FE00B1708E /* LMWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMWindowController.h; sourceTree = "<group>"; };
+		E72E198C182B21FE00B1708E /* LMWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +84,8 @@
 				E4C4B68C1A8E9286008B4ADF /* LMApplicationDelegate.m */,
 				E72E197D182B1E1B00B1708E /* LMDocument.h */,
 				E72E197E182B1E1B00B1708E /* LMDocument.m */,
-				E72E198B182B21FE00B1708E /* LMDocumentsWindowController.h */,
-				E72E198C182B21FE00B1708E /* LMDocumentsWindowController.m */,
+				E72E198B182B21FE00B1708E /* LMWindowController.h */,
+				E72E198C182B21FE00B1708E /* LMWindowController.m */,
 			);
 			path = DocumentTest;
 			sourceTree = "<group>";
@@ -168,7 +168,7 @@
 				E72E1978182B1E1B00B1708E /* main.m in Sources */,
 				E72E197F182B1E1B00B1708E /* LMDocument.m in Sources */,
 				E4C4B68D1A8E9286008B4ADF /* LMApplicationDelegate.m in Sources */,
-				E72E198E182B21FE00B1708E /* LMDocumentsWindowController.m in Sources */,
+				E72E198E182B21FE00B1708E /* LMWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
