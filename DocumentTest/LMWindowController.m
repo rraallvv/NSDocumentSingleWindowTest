@@ -90,7 +90,7 @@ static id aInstance;
     
     [tv setString:@""];
 
-    //[docToRemove close];
+    [docToRemove close];
 }
 
 -(void)windowWillClose:(NSNotification*) notification
@@ -136,10 +136,10 @@ static id aInstance;
 
 - (void)close
 {
-    if (_closeCalledInternally) {
-        _closeCalledInternally = NO;
-        [super close];
-    }
+	if (_closeCalledInternally) {
+		_closeCalledInternally = NO;
+		[super close];
+	}
 }
 
 @end
