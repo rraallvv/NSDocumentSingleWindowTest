@@ -1,5 +1,5 @@
 //
-//  LMApplicationDelegate.h
+//  LMAppDelegate.h
 //  NSDocumentSingleWindowTest
 //
 //  Created by Rhody Lugo on 2/13/15.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface LMApplicationDelegate : NSObject<NSApplicationDelegate>
+@interface LMAppDelegate : NSObject<NSApplicationDelegate>
 
 @end

@@ -1,26 +1,40 @@
 //
-//  LMApplicationDelegate.m
+//  LMAppDelegate.m
 //  NSDocumentSingleWindowTest
 //
 //  Created by Rhody Lugo on 2/13/15.
 //  Copyright (c) 2015 Felix Deimel. All rights reserved.
 //
 
-#import "LMApplicationDelegate.h"
+#import "LMAppDelegate.h"
 
-@implementation LMApplicationDelegate
+#define OPEN_UNTITLED	1
 
--(void)applicationDidFinishLaunching:(NSNotification *)notification
-{
+@interface LMAppDelegate ()
+
+@end
+
+@implementation LMAppDelegate
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+	// Insert code here to initialize your application
+
+#if OPEN_UNTITLED
+
 	// Schedule "Checking whether document exists." into next UI Loop.
 	// Because document is not restored yet.
 	// So we don't know what do we have to create new one.
 	// Opened document can be identified here. (double click document file)
 	NSInvocationOperation* op = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(openNewDocumentIfNeeded) object:nil];
 	[[NSOperationQueue mainQueue] addOperation: op];
+
+#endif
+
 }
 
--(void)openNewDocumentIfNeeded
+#if OPEN_UNTITLED
+
+- (void)openNewDocumentIfNeeded
 {
 	NSUInteger documentCount = [[[NSDocumentController sharedDocumentController] documents]count];
 
@@ -30,12 +44,18 @@
 	}
 }
 
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
 	return YES;
 }
 
-- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
-	return YES;
+#endif
+
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+	return NO;
+}
+
+- (void)applicationWillTerminate:(NSNotification *)aNotification {
+	// Insert code here to tear down your application
 }
 
 @end
