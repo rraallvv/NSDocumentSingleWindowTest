@@ -21,8 +21,6 @@ static id aInstance;
 -(void)awakeFromNib
 {
     aInstance = self;
-    
-	[self setDocument: self.document];
 
     _closeCalledInternally = NO;
 }
@@ -30,21 +28,6 @@ static id aInstance;
 +(id)instance
 {
     return aInstance;
-}
-
-- (void)windowDidLoad
-{
-    [super windowDidLoad];
-}
-
-- (void)dealloc
-{
-    if (self.document) {
-        [self.document release];
-        self.document = nil;
-    }
-
-    [super dealloc];
 }
 
 - (IBAction)closeDocument:(id)sender
@@ -58,11 +41,6 @@ static id aInstance;
     
     [self addDocument:doc];
 }
-
-/* -(void)setDocument:(NSDocument*)document
-{
-    // nothing to do here
-} */
 
 -(void)addDocument:(LMDocument*)docToAdd
 {
@@ -80,7 +58,6 @@ static id aInstance;
 	self.document = [docToAdd retain];
 
     [self.textViewDocument setString:docToAdd.dataInMemory];
-	[self setDocument: self.document];
 
     //[lmDoc setWindow:self.window];
     //[lmDoc setDisplayName:@"MY DOC DISPLAY NAME"];
@@ -112,8 +89,6 @@ static id aInstance;
     }
     
     [tv setString:@""];
-    
-	[self setDocument: self.document];
 
     //[docToRemove close];
 }
@@ -157,11 +132,6 @@ static id aInstance;
             [doc updateChangeCount:NSChangeCleared];
         }
     }
-}
-
-- (void)textDidEndEditing:(NSNotification *)notification
-{
-	[self setDocument: self.document];
 }
 
 - (void)close
