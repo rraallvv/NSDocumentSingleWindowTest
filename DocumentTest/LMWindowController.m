@@ -170,7 +170,7 @@ static id aInstance;
     
     [self setActiveDocument];
     
-    [docToRemove close];
+    //[docToRemove close];
 }
 
 -(void)windowWillClose:(NSNotification*) notification
