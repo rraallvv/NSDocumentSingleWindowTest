@@ -23,8 +23,8 @@ static id aInstance;
 {
     aInstance = self;
     
-    [self setActiveDocument];
-    
+	[self setDocument: self.document];
+
     _closeCalledInternally = NO;
 }
 
@@ -93,23 +93,6 @@ static id aInstance;
     return nil;
 }
 
--(void)setActiveDocument
-{
-    [self performSelector:@selector(setActiveDocumentReal) withObject:nil afterDelay:0];
-}
-
--(void)setActiveDocumentReal
-{
-    LMDocument* doc = [self document];
-    
-    if (doc) {
-        [self setDocument:doc];
-    } else {
-        [self setDocument:nil];
-        [self.window setTitle:@"NO DOCUMENT"];
-    }
-}
-
 -(void)addDocument:(LMDocument*)docToAdd
 {
     NSTextView *tv = [self activeTextView];
@@ -135,7 +118,7 @@ static id aInstance;
     }
 
     [tv setString:docToAdd.dataInMemory];
-    [self setActiveDocument];
+	[self setDocument: self.document];
 
     //[lmDoc setWindow:self.window];
     //[lmDoc setDisplayName:@"MY DOC DISPLAY NAME"];
@@ -168,8 +151,8 @@ static id aInstance;
     
     [tv setString:@""];
     
-    [self setActiveDocument];
-    
+	[self setDocument: self.document];
+
     //[docToRemove close];
 }
 
@@ -217,7 +200,7 @@ static id aInstance;
 
 - (void)textDidEndEditing:(NSNotification *)notification
 {
-    [self setActiveDocument];
+	[self setDocument: self.document];
 }
 
 - (void)close
