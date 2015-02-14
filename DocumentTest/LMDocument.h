@@ -8,8 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-extern NSString* const LMDocumentNeedWindowNotification;
-
 @interface LMDocument : NSDocument {
     
 }

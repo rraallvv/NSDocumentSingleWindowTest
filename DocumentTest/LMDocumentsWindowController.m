@@ -23,7 +23,6 @@ static id aInstance;
 {
     aInstance = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(documentNeedsWindow:) name:LMDocumentNeedWindowNotification object:nil];
     [self setActiveDocument];
     
     _closeCalledInternally = NO;
