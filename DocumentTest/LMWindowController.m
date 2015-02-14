@@ -15,7 +15,6 @@ static id aInstance;
 @end
 
 @implementation LMWindowController {
-    LMDocument *_doc;
     BOOL _closeCalledInternally;
 }
 
@@ -40,9 +39,9 @@ static id aInstance;
 
 - (void)dealloc
 {
-    if (_doc) {
-        [_doc release];
-        _doc = nil;
+    if (self.document) {
+        [self.document release];
+        self.document = nil;
     }
 
     [super dealloc];
@@ -65,11 +64,6 @@ static id aInstance;
     // nothing to do here
 } */
 
--(NSDocument*)document
-{
-    return _doc;
-}
-
 -(void)addDocument:(LMDocument*)docToAdd
 {
     LMDocument *closeDoc = nil;
@@ -83,7 +77,7 @@ static id aInstance;
     // !!!  It's very important to do this before adding the document to the NSArray because Cocoa calls document on NSWindowController to see if there has been a document assigned to this window controller already. if so, it doesn't add the window controller to the NSDocument  !!!
     [docToAdd addWindowController:self];
     
-	_doc = [docToAdd retain];
+	self.document = [docToAdd retain];
 
     [self.textViewDocument setString:docToAdd.dataInMemory];
 	[self setDocument: self.document];
@@ -108,12 +102,12 @@ static id aInstance;
     
     NSTextView *tv = nil;
     
-    if (_doc == docToRemove) {
+    if (self.document == docToRemove) {
         tv = self.textViewDocument;
         
-        if (_doc) {
-            [_doc release];
-            _doc = nil;
+        if (self.document) {
+            [self.document release];
+            self.document = nil;
         }
     }
     
@@ -134,10 +128,9 @@ static id aInstance;
     // TODO: Clean up any views related to documents
     
     // disassociate this window controller from the document
-    if (_doc) {
-        [_doc removeWindowController:self];
-    }
-    
+    if (self.document)
+        [self.document removeWindowController:self];
+
     // then any content view
     [window setContentView:nil];
 }
@@ -150,7 +143,7 @@ static id aInstance;
     LMDocument *doc = nil;
     
     if (textView == self.textViewDocument) {
-        doc = _doc;
+        doc = self.document;
     }
 
     if (doc) {
