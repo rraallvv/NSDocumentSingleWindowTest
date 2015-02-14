@@ -16,7 +16,7 @@
 	// Because document is not restored yet.
 	// So we don't know what do we have to create new one.
 	// Opened document can be identified here. (double click document file)
-	NSInvocationOperation* op = [[[NSInvocationOperation alloc] initWithTarget:self selector:@selector(openNewDocumentIfNeeded) object:nil] autorelease];
+	NSInvocationOperation* op = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(openNewDocumentIfNeeded) object:nil];
 	[[NSOperationQueue mainQueue] addOperation: op];
 }
 

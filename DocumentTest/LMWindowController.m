@@ -55,7 +55,7 @@ static id aInstance;
     // !!!  It's very important to do this before adding the document to the NSArray because Cocoa calls document on NSWindowController to see if there has been a document assigned to this window controller already. if so, it doesn't add the window controller to the NSDocument  !!!
     [docToAdd addWindowController:self];
     
-	self.document = [docToAdd retain];
+	self.document = docToAdd;
 
     [self.textViewDocument setString:docToAdd.dataInMemory];
 
@@ -82,10 +82,8 @@ static id aInstance;
     if (self.document == docToRemove) {
         tv = self.textViewDocument;
         
-        if (self.document) {
-            [self.document release];
+        if (self.document)
             self.document = nil;
-        }
     }
     
     [tv setString:@""];
