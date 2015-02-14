@@ -71,16 +71,6 @@
     return YES;
 }
 
-+ (BOOL)preservesVersions
-{
-    return YES;
-}
-
-/* - (NSString*)displayName
-{
-    return @"Royal TSX - Filename";
-} */
-
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
@@ -111,11 +101,6 @@
 - (BOOL)hasChanges
 {
     return ![_dataInMemory isEqualToString:_dataFromLoad];
-}
-
-- (void)close
-{
-    [super close];
 }
 
 @end
