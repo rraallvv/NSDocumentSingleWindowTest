@@ -15,35 +15,36 @@ static id aInstance;
 @end
 
 @implementation LMWindowController {
+
     BOOL _closeCalledInternally;
 }
 
--(void)awakeFromNib
-{
+-(void)awakeFromNib {
+
     aInstance = self;
 
     _closeCalledInternally = NO;
 }
 
-+(id)instance
-{
++(id)instance {
+
     return aInstance;
 }
 
-- (IBAction)closeDocument:(id)sender
-{
+- (IBAction)closeDocument:(id)sender {
+
     [self removeDocument:[self document]];
 }
 
--(void)documentNeedsWindow:(NSNotification*)aNotification
-{
+-(void)documentNeedsWindow:(NSNotification*)aNotification {
+
     LMDocument* doc = [aNotification object];
     
     [self addDocument:doc];
 }
 
--(void)addDocument:(LMDocument*)docToAdd
-{
+-(void)addDocument:(LMDocument*)docToAdd {
+
     LMDocument *closeDoc = nil;
     
 	closeDoc = [self document];
@@ -65,8 +66,8 @@ static id aInstance;
     //[self setDocument:docToAdd];
 }
 
--(void)removeDocument:(LMDocument*)docToRemove
-{
+-(void)removeDocument:(LMDocument*)docToRemove {
+
     // ... remove the document's view controller and view ...
     
     // finally detach the document from the window controller
@@ -76,23 +77,18 @@ static id aInstance;
         _closeCalledInternally = YES;
         [self close];
     }
-    
-    NSTextView *tv = nil;
-    
+
     if (self.document == docToRemove) {
-        tv = self.textViewDocument;
-        
+
         if (self.document)
             self.document = nil;
     }
-    
-    [tv setString:@""];
 
     [docToRemove close];
 }
 
--(void)windowWillClose:(NSNotification*) notification
-{
+-(void)windowWillClose:(NSNotification*) notification {
+
     NSWindow * window = self.window;
     if (notification.object != window) {
         return;
@@ -109,8 +105,8 @@ static id aInstance;
 }
 
 
-- (void)textDidChange:(NSNotification *)notification
-{
+- (void)textDidChange:(NSNotification *)notification {
+
     NSTextView *textView = [notification object];
     
     LMDocument *doc = nil;
@@ -132,8 +128,8 @@ static id aInstance;
     }
 }
 
-- (void)close
-{
+- (void)close {
+
 	if (_closeCalledInternally) {
 		_closeCalledInternally = NO;
 		[super close];
