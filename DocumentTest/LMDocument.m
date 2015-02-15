@@ -10,89 +10,72 @@
 #import "LMWindowController.h"
 
 @implementation LMDocument {
-    NSString* _dataInMemory;
-    NSString* _dataFromLoad;
+	NSString* _dataInMemory;
+	NSString* _dataFromLoad;
 }
 
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        self.dataInMemory = @"";
-        _dataFromLoad = [self.dataInMemory copy];
-    }
-    return self;
+- (instancetype)init {
+	self = [super init];
+	if (self) {
+		self.dataInMemory = @"";
+		_dataFromLoad = [self.dataInMemory copy];
+	}
+	return self;
 }
 
-- (void)dealloc
-{
-    if (_dataInMemory)
-        _dataInMemory = nil;
-    
-    if (_dataFromLoad)
-        _dataFromLoad = nil;
+-(void)setDataInMemory:(NSString *)aDataInMemory {
+	_dataInMemory = aDataInMemory;
 }
 
--(void)setDataInMemory:(NSString *)aDataInMemory
-{
-    _dataInMemory = aDataInMemory;
+-(NSString*)dataInMemory {
+	return _dataInMemory;
 }
 
--(NSString*)dataInMemory
-{
-    return _dataInMemory;
-}
-
--(void)makeWindowControllers
-{
+-(void)makeWindowControllers {
 	LMWindowController *wc = [LMWindowController instance];
 
 	[wc addDocument:self];
 
-    //[[NSNotificationCenter defaultCenter] postNotificationName:LMDocumentNeedWindowNotification object:self];
-    
-    /* LMWindowController *wc = [[LMWindowController alloc] initWithWindowNibName:@"LMMultipleDocumentsWindow"];
+	//[[NSNotificationCenter defaultCenter] postNotificationName:LMDocumentNeedWindowNotification object:self];
 
-    //[wc addDocument:self];
+	/* LMWindowController *wc = [[LMWindowController alloc] initWithWindowNibName:@"LMMultipleDocumentsWindow"];
 
-    [self addWindowController:wc];
+	//[wc addDocument:self];
 
-    [wc showWindow:self]; */
+	[self addWindowController:wc];
+
+	[wc showWindow:self]; */
 }
 
-+ (BOOL)autosavesInPlace
-{
-    return YES;
++ (BOOL)autosavesInPlace {
+	return YES;
 }
 
-- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
-{
-    // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-    // You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    
-    if (_dataFromLoad)
-        _dataFromLoad = nil;
-    
-    _dataFromLoad = [_dataInMemory copy];
-    
-    return [[self dataInMemory] dataUsingEncoding:NSUTF8StringEncoding];
+- (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
+	// Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
+	// You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
+
+	if (_dataFromLoad)
+		_dataFromLoad = nil;
+
+	_dataFromLoad = [_dataInMemory copy];
+
+	return [[self dataInMemory] dataUsingEncoding:NSUTF8StringEncoding];
 }
 
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
-{
-    // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
-    // You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
-    // If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
-    
-    [self setDataInMemory:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
-    _dataFromLoad = [_dataInMemory copy];
-    
-    return YES;
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
+	// Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
+	// You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
+	// If you override either of these, you should also override -isEntireFileLoaded to return NO if the contents are lazily loaded.
+
+	[self setDataInMemory:[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]];
+	_dataFromLoad = [_dataInMemory copy];
+
+	return YES;
 }
 
-- (BOOL)hasChanges
-{
-    return ![_dataInMemory isEqualToString:_dataFromLoad];
+- (BOOL)hasChanges {
+	return ![_dataInMemory isEqualToString:_dataFromLoad];
 }
 
 @end
