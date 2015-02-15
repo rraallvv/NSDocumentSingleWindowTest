@@ -31,13 +31,6 @@ static id aInstance;
     return aInstance;
 }
 
--(void)documentNeedsWindow:(NSNotification*)aNotification {
-
-    LMDocument* doc = [aNotification object];
-    
-    [self addDocument:doc];
-}
-
 -(void)addDocument:(LMDocument*)docToAdd {
 
     LMDocument *closeDoc = nil;
