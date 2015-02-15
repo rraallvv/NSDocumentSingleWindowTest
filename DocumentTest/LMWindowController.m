@@ -31,11 +31,6 @@ static id aInstance;
     return aInstance;
 }
 
-- (IBAction)closeDocument:(id)sender {
-
-    [self removeDocument:[self document]];
-}
-
 -(void)documentNeedsWindow:(NSNotification*)aNotification {
 
     LMDocument* doc = [aNotification object];
@@ -49,9 +44,8 @@ static id aInstance;
     
 	closeDoc = [self document];
     
-    if (closeDoc) {
-        [self closeDocument:closeDoc];
-    }
+    if (closeDoc)
+		[self removeDocument:[self document]];
     
     // !!!  It's very important to do this before adding the document to the NSArray because Cocoa calls document on NSWindowController to see if there has been a document assigned to this window controller already. if so, it doesn't add the window controller to the NSDocument  !!!
     [docToAdd addWindowController:self];

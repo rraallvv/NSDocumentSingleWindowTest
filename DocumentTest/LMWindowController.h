@@ -12,7 +12,6 @@
 @interface LMWindowController : NSWindowController<NSTextViewDelegate>
 
 +(id)instance;
-- (IBAction)closeDocument:(id)sender;
 -(void)addDocument:(LMDocument*)docToAdd;
 
 @property (assign) IBOutlet NSTextView *textViewDocument;
