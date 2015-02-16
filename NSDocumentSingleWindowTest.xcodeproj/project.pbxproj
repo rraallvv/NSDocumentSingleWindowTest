@@ -22,6 +22,8 @@
 		E47162A61A91950E003B355F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Window.xib; sourceTree = "<group>"; };
 		E47162B11A91ABC2003B355F /* LMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMViewController.h; sourceTree = "<group>"; };
 		E47162B21A91ABC2003B355F /* LMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMViewController.m; sourceTree = "<group>"; };
+		E47162B41A91B230003B355F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = SOURCE_ROOT; };
+		E47162B51A91B238003B355F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		E4C4B68B1A8E9286008B4ADF /* LMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAppDelegate.h; sourceTree = "<group>"; };
 		E4C4B68C1A8E9286008B4ADF /* LMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAppDelegate.m; sourceTree = "<group>"; };
 		E72E1968182B1E1B00B1708E /* NSDocumentSingleWindowTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSDocumentSingleWindowTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,8 @@
 		E72E1971182B1E1B00B1708E /* DocumentTest */ = {
 			isa = PBXGroup;
 			children = (
+				E47162B51A91B238003B355F /* README.md */,
+				E47162B41A91B230003B355F /* LICENSE */,
 				E72E1972182B1E1B00B1708E /* Supporting Files */,
 				E72E1983182B1E1B00B1708E /* MainMenu.xib */,
 				E47162A51A91950E003B355F /* Window.xib */,
