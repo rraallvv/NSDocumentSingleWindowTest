@@ -14,6 +14,4 @@
 
 @property (nonatomic, retain) NSString* dataInMemory;
 
-- (BOOL)hasChanges;
-
 @end

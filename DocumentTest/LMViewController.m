@@ -38,12 +38,6 @@
 
 	if (doc) {
 		doc.dataInMemory = self.textView.string;
-
-		if (doc.hasChanges) {
-			[doc updateChangeCount:NSChangeDone];
-		} else {
-			[doc updateChangeCount:NSChangeCleared];
-		}
 	}
 }
 
