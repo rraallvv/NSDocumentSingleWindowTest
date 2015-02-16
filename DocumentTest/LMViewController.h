@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMViewController : NSViewController
+@interface LMViewController : NSViewController <NSTextViewDelegate>
+
+@property (assign) IBOutlet NSTextView *textView;
 
 @end

@@ -32,7 +32,7 @@
 }
 
 -(void)makeWindowControllers {
-	[self addWindowController:[LMWindowController instance]];
+	[self addWindowController:LMWindowController.instance];
 }
 
 + (BOOL)autosavesInPlace {

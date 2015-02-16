@@ -7,12 +7,9 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "LMDocument.h"
 
-@interface LMWindowController : NSWindowController<NSTextViewDelegate>
+@interface LMWindowController : NSWindowController
 
 +(LMWindowController *)instance;
-
-@property (assign) IBOutlet NSTextView *textViewDocument;
 
 @end

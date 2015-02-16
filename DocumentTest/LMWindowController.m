@@ -29,9 +29,14 @@ static LMWindowController *aInstance = nil;
 
 - (void)windowDidLoad {
 	[super windowDidLoad];
+
+	self.contentViewController = _viewController;
+
 	LMDocument *doc = self.document;
+
 	if (doc) {
-		[self.textViewDocument setString:doc.dataInMemory];
+		_viewController.representedObject = doc;
+		[_viewController.textView setString:doc.dataInMemory];
 	}
 }
 
@@ -40,33 +45,12 @@ static LMWindowController *aInstance = nil;
 	if (self.document)
 		[self.document close];
 
+	_viewController.representedObject = docToAdd;
+
 	if (docToAdd.dataInMemory)
-		[self.textViewDocument setString:docToAdd.dataInMemory];
+		[_viewController.textView setString:docToAdd.dataInMemory];
 
 	[super setDocument:docToAdd];
-}
-
-- (void)textDidChange:(NSNotification *)notification {
-
-    NSTextView *textView = [notification object];
-    
-    LMDocument *doc = nil;
-    
-    if (textView == self.textViewDocument) {
-        doc = self.document;
-    }
-
-    if (doc) {
-        doc.dataInMemory = [textView string];
-        
-        BOOL hasChanges = [doc hasChanges];
-        
-        if (hasChanges) {
-            [doc updateChangeCount:NSChangeDone];
-        } else {
-            [doc updateChangeCount:NSChangeCleared];
-        }
-    }
 }
 
 - (void)close {

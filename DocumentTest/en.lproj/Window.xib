@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LMWindowController">
             <connections>
-                <outlet property="textViewDocument" destination="93W-Fy-7xL" id="4u0-yg-L40"/>
                 <outlet property="viewController" destination="QaX-kC-w1x" id="IjH-o2-nHn"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="qfP-zY-Pkk"/>
             </connections>
@@ -38,7 +37,7 @@
                                     <size key="minSize" width="431" height="232"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <connections>
-                                        <outlet property="delegate" destination="-2" id="v3L-VK-bbG"/>
+                                        <outlet property="delegate" destination="QaX-kC-w1x" id="Hnr-gW-qhT"/>
                                     </connections>
                                 </textView>
                             </subviews>
@@ -65,6 +64,7 @@
         </window>
         <customObject id="QaX-kC-w1x" customClass="LMViewController">
             <connections>
+                <outlet property="textView" destination="93W-Fy-7xL" id="O6Y-da-WV3"/>
                 <outlet property="view" destination="EiT-Mj-1SZ" id="Gfp-qU-fb8"/>
             </connections>
         </customObject>
