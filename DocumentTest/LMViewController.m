@@ -26,13 +26,6 @@
 	super.representedObject = representedObject;
 }
 
-- (void)textDidChange:(NSNotification *)notification {
-
-	LMDocument *doc = self.representedObject;
-
-	if (doc) {
-		doc.textView.string = self.textView.string;
-	}
-}
+- (void)textDidChange:(NSNotification *)notification { [self.representedObject textDidChange:notification]; }
 
 @end

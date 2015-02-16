@@ -49,4 +49,9 @@
 	[super close];
 }
 
+- (void)textDidChange:(NSNotification *)notification {
+	NSTextView *textView = notification.object;
+	self.textView.string = textView.string;
+}
+
 @end

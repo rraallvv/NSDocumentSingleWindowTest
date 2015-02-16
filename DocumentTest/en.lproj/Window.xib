@@ -37,7 +37,7 @@
                                     <size key="minSize" width="431" height="232"/>
                                     <size key="maxSize" width="463" height="10000000"/>
                                     <connections>
-                                        <outlet property="delegate" destination="QaX-kC-w1x" id="Hnr-gW-qhT"/>
+                                        <outlet property="delegate" destination="QaX-kC-w1x" id="rke-7c-qEX"/>
                                     </connections>
                                 </textView>
                             </subviews>
