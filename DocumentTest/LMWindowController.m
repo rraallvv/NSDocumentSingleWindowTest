@@ -40,17 +40,11 @@ static LMWindowController *aInstance = nil;
 	}
 }
 
--(void)setDocument:(LMDocument*)docToAdd {
-
-	if (self.document)
-		[self.document close];
-
-	_viewController.representedObject = docToAdd;
-
-	if (docToAdd.dataInMemory)
-		[_viewController.textView setString:docToAdd.dataInMemory];
-
-	[super setDocument:docToAdd];
+- (void)setDocument:(id)document {
+	[super setDocument:document];
+	if (document != nil && self.contentViewController != nil) {
+		self.contentViewController.representedObject = document;
+	}
 }
 
 - (void)close {

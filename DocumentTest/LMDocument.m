@@ -66,4 +66,9 @@
 	return ![_dataInMemory isEqualToString:_dataFromLoad];
 }
 
+- (void)close {
+	[self removeWindowController:LMWindowController.instance];
+	[super close];
+}
+
 @end

@@ -20,6 +20,21 @@
     // Do view setup here.
 }
 
+- (void)setRepresentedObject:(id)representedObject {
+
+	if (self.representedObject)
+		[self.representedObject close];
+
+	LMDocument *doc = representedObject;
+
+	if (doc.dataInMemory)
+		self.textView.string = [doc.dataInMemory copy];
+	else
+		self.textView.string = @"";
+
+	super.representedObject = representedObject;
+}
+
 - (void)textDidChange:(NSNotification *)notification {
 
 	NSTextView *textView = [notification object];
