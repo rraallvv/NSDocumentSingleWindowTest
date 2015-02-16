@@ -9,9 +9,7 @@
 #import "LMDocument.h"
 #import "LMWindowController.h"
 
-@implementation LMDocument {
-	NSString* _dataInMemory;
-}
+@implementation LMDocument
 
 - (instancetype)init {
 	self = [super init];
@@ -19,14 +17,6 @@
 		self.dataInMemory = @"";
 	}
 	return self;
-}
-
--(void)setDataInMemory:(NSString *)aDataInMemory {
-	_dataInMemory = aDataInMemory;
-}
-
--(NSString*)dataInMemory {
-	return _dataInMemory;
 }
 
 -(void)makeWindowControllers {

@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMDocument : NSDocument {
-    
-}
+@interface LMDocument : NSDocument
 
 @property (nonatomic, retain) NSString* dataInMemory;
 
