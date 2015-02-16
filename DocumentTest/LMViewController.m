@@ -9,10 +9,6 @@
 #import "LMViewController.h"
 #import "LMDocument.h"
 
-@interface LMViewController ()
-
-@end
-
 @implementation LMViewController
 
 - (void)viewDidLoad {
