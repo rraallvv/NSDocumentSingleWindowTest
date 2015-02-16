@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="LMWindowController">
+        <customObject id="-2" userLabel="File's Owner">
             <connections>
                 <outlet property="viewController" destination="QaX-kC-w1x" id="IjH-o2-nHn"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="qfP-zY-Pkk"/>
@@ -65,7 +65,12 @@
         <customObject id="QaX-kC-w1x" customClass="LMViewController">
             <connections>
                 <outlet property="textView" destination="93W-Fy-7xL" id="O6Y-da-WV3"/>
-                <outlet property="view" destination="EiT-Mj-1SZ" id="Gfp-qU-fb8"/>
+                <outlet property="view" destination="EiT-Mj-1SZ" id="Kck-Gh-pkV"/>
+            </connections>
+        </customObject>
+        <customObject id="fdy-0c-bVp" customClass="LMWindowController">
+            <connections>
+                <outlet property="viewController" destination="QaX-kC-w1x" id="fMm-Bc-Z8T"/>
             </connections>
         </customObject>
     </objects>

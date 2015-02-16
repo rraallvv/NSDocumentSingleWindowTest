@@ -10,6 +10,6 @@
 
 @interface LMDocument : NSDocument
 
-@property (assign) IBOutlet NSTextView *textView;
+@property (strong) IBOutlet NSTextView *textView;
 
 @end

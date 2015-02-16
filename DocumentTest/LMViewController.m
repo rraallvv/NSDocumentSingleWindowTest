@@ -16,12 +16,10 @@
     // Do view setup here.
 }
 
-- (void)setRepresentedObject:(id)representedObject {
+- (void)setRepresentedObject:(LMDocument *)representedObject {
 
-	LMDocument *doc = representedObject;
-
-	if (doc)
-		self.textView.string = [doc.textView.string copy];
+	if (representedObject)
+		self.textView.string = [representedObject.textView.string copy];
 	else
 		self.textView.string = @"";
 
