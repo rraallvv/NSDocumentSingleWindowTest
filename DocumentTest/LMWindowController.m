@@ -21,23 +21,15 @@ static LMWindowController *aInstance = nil;
 @implementation LMWindowController
 
 +(LMWindowController *)instance {
-	if (!aInstance) {
+	if (!aInstance)
 		aInstance = [[LMWindowController alloc] initWithWindowNibName:@"Window"];
-	}
     return aInstance;
 }
 
 - (void)windowDidLoad {
 	[super windowDidLoad];
-
 	self.contentViewController = _viewController;
-
-	LMDocument *doc = self.document;
-
-	if (doc) {
-		_viewController.representedObject = doc;
-		_viewController.textView.string = doc.textView.string;
-	}
+	[self setDocument:self.document];
 }
 
 - (void)setDocument:(id)document {
