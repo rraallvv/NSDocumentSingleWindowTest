@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E47162A71A91950E003B355F /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47162A51A91950E003B355F /* Window.xib */; };
+		E47162B31A91ABC2003B355F /* LMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E47162B21A91ABC2003B355F /* LMViewController.m */; };
 		E4C4B68D1A8E9286008B4ADF /* LMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C4B68C1A8E9286008B4ADF /* LMAppDelegate.m */; };
 		E72E196C182B1E1B00B1708E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72E196B182B1E1B00B1708E /* Cocoa.framework */; };
 		E72E1976182B1E1B00B1708E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E72E1974182B1E1B00B1708E /* InfoPlist.strings */; };
@@ -19,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		E47162A61A91950E003B355F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Window.xib; sourceTree = "<group>"; };
+		E47162B11A91ABC2003B355F /* LMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMViewController.h; sourceTree = "<group>"; };
+		E47162B21A91ABC2003B355F /* LMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMViewController.m; sourceTree = "<group>"; };
 		E4C4B68B1A8E9286008B4ADF /* LMAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMAppDelegate.h; sourceTree = "<group>"; };
 		E4C4B68C1A8E9286008B4ADF /* LMAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMAppDelegate.m; sourceTree = "<group>"; };
 		E72E1968182B1E1B00B1708E /* NSDocumentSingleWindowTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NSDocumentSingleWindowTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +92,8 @@
 				E72E197E182B1E1B00B1708E /* LMDocument.m */,
 				E72E198B182B21FE00B1708E /* LMWindowController.h */,
 				E72E198C182B21FE00B1708E /* LMWindowController.m */,
+				E47162B11A91ABC2003B355F /* LMViewController.h */,
+				E47162B21A91ABC2003B355F /* LMViewController.m */,
 			);
 			path = DocumentTest;
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 			files = (
 				E72E1978182B1E1B00B1708E /* main.m in Sources */,
 				E72E197F182B1E1B00B1708E /* LMDocument.m in Sources */,
+				E47162B31A91ABC2003B355F /* LMViewController.m in Sources */,
 				E4C4B68D1A8E9286008B4ADF /* LMAppDelegate.m in Sources */,
 				E72E198E182B21FE00B1708E /* LMWindowController.m in Sources */,
 			);

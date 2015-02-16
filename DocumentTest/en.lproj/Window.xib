@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="LMWindowController">
             <connections>
                 <outlet property="textViewDocument" destination="93W-Fy-7xL" id="4u0-yg-L40"/>
+                <outlet property="viewController" destination="QaX-kC-w1x" id="IjH-o2-nHn"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="qfP-zY-Pkk"/>
             </connections>
         </customObject>
@@ -62,5 +63,10 @@
             </view>
             <point key="canvasLocation" x="488" y="481"/>
         </window>
+        <customObject id="QaX-kC-w1x" customClass="LMViewController">
+            <connections>
+                <outlet property="view" destination="EiT-Mj-1SZ" id="Gfp-qU-fb8"/>
+            </connections>
+        </customObject>
     </objects>
 </document>

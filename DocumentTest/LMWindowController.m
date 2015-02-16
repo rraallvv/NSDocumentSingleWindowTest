@@ -7,11 +7,15 @@
 //
 
 #import "LMWindowController.h"
+#import "LMViewController.h"
 #import "LMDocument.h"
 
 static LMWindowController *aInstance = nil;
 
 @interface LMWindowController ()
+
+@property (weak) IBOutlet LMViewController *viewController;
+
 @end
 
 @implementation LMWindowController
