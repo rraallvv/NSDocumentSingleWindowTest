@@ -20,8 +20,8 @@
 
 	LMDocument *doc = representedObject;
 
-	if (doc.dataInMemory)
-		self.textView.string = [doc.dataInMemory copy];
+	if (doc)
+		self.textView.string = [doc.textView.string copy];
 	else
 		self.textView.string = @"";
 
@@ -33,7 +33,7 @@
 	LMDocument *doc = self.representedObject;
 
 	if (doc) {
-		doc.dataInMemory = self.textView.string;
+		doc.textView.string = self.textView.string;
 	}
 }
 

@@ -10,6 +10,6 @@
 
 @interface LMDocument : NSDocument
 
-@property (nonatomic, retain) NSString* dataInMemory;
+@property (assign) IBOutlet NSTextView *textView;
 
 @end

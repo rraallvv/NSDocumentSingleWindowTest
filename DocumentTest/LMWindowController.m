@@ -36,7 +36,7 @@ static LMWindowController *aInstance = nil;
 
 	if (doc) {
 		_viewController.representedObject = doc;
-		[_viewController.textView setString:doc.dataInMemory];
+		_viewController.textView.string = doc.textView.string;
 	}
 }
 
