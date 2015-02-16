@@ -43,7 +43,9 @@ static LMWindowController *aInstance = nil;
 - (void)setDocument:(id)document {
 	[super setDocument:document];
 	if (document != nil && self.contentViewController != nil) {
-		self.contentViewController.representedObject = document;
+		if (_viewController.representedObject)
+			[_viewController.representedObject close];
+		_viewController.representedObject = document;
 	}
 }
 

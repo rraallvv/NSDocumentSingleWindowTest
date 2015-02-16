@@ -22,9 +22,6 @@
 
 - (void)setRepresentedObject:(id)representedObject {
 
-	if (self.representedObject)
-		[self.representedObject close];
-
 	LMDocument *doc = representedObject;
 
 	if (doc.dataInMemory)
@@ -37,19 +34,12 @@
 
 - (void)textDidChange:(NSNotification *)notification {
 
-	NSTextView *textView = [notification object];
-
-	LMDocument *doc = nil;
-
-	if (textView == self.textView)
-		doc = self.representedObject;
+	LMDocument *doc = self.representedObject;
 
 	if (doc) {
-		doc.dataInMemory = [textView string];
+		doc.dataInMemory = self.textView.string;
 
-		BOOL hasChanges = [doc hasChanges];
-
-		if (hasChanges) {
+		if (doc.hasChanges) {
 			[doc updateChangeCount:NSChangeDone];
 		} else {
 			[doc updateChangeCount:NSChangeCleared];
