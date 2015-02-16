@@ -33,28 +33,9 @@ static id aInstance;
 
 -(void)addDocument:(LMDocument*)docToAdd {
 
-    LMDocument *closeDoc = nil;
-    
-	closeDoc = [self document];
-    
-	if (closeDoc) {
-		// ... remove the document's view controller and view ...
-
-		// finally detach the document from the window controller
-		// TODO: Remove any views related to the doc
-
-		if (!closeDoc) {
-			_closeCalledInternally = YES;
-			[self close];
-		}
-
-		if (self.document == closeDoc) {
-
-			if (self.document)
-				self.document = nil;
-		}
-
-		[closeDoc close];
+	if (self.document) {
+		[self.document close];
+		self.document = nil;
 	}
 
     // !!!  It's very important to do this before adding the document to the NSArray because Cocoa calls document on NSWindowController to see if there has been a document assigned to this window controller already. if so, it doesn't add the window controller to the NSDocument  !!!
@@ -63,11 +44,6 @@ static id aInstance;
 	self.document = docToAdd;
 
     [self.textViewDocument setString:docToAdd.dataInMemory];
-
-    //[lmDoc setWindow:self.window];
-    //[lmDoc setDisplayName:@"MY DOC DISPLAY NAME"];
-    
-    //[self setDocument:docToAdd];
 }
 
 -(void)windowWillClose:(NSNotification*) notification {
