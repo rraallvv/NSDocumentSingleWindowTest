@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LMDocument : NSDocument
+@interface LMDocument : NSDocument <NSTextViewDelegate>
 
 @property (strong) IBOutlet NSTextView *textView;
 

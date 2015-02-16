@@ -18,14 +18,13 @@
 
 - (void)setRepresentedObject:(LMDocument *)representedObject {
 
-	if (representedObject)
+	if (representedObject) {
 		self.textView.string = [representedObject.textView.string copy];
-	else
+		self.textView.delegate = representedObject;
+	} else {
 		self.textView.string = @"";
-
+	}
 	super.representedObject = representedObject;
 }
-
-- (void)textDidChange:(NSNotification *)notification { [self.representedObject textDidChange:notification]; }
 
 @end
