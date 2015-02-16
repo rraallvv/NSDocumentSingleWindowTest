@@ -42,24 +42,6 @@ static LMWindowController *aInstance = nil;
 	[super setDocument:docToAdd];
 }
 
--(void)windowWillClose:(NSNotification*) notification {
-
-    NSWindow * window = self.window;
-    if (notification.object != window) {
-        return;
-    }
-    
-    // TODO: Clean up any views related to documents
-    
-    // disassociate this window controller from the document
-    if (self.document)
-        [self.document removeWindowController:self];
-
-    // then any content view
-    [window setContentView:nil];
-}
-
-
 - (void)textDidChange:(NSNotification *)notification {
 
     NSTextView *textView = [notification object];
