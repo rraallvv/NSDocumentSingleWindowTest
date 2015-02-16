@@ -31,19 +31,15 @@ static id aInstance;
     return aInstance;
 }
 
--(void)addDocument:(LMDocument*)docToAdd {
+-(void)setDocument:(LMDocument*)docToAdd {
 
-	if (self.document) {
+	if (self.document)
 		[self.document close];
-		self.document = nil;
-	}
 
-    // !!!  It's very important to do this before adding the document to the NSArray because Cocoa calls document on NSWindowController to see if there has been a document assigned to this window controller already. if so, it doesn't add the window controller to the NSDocument  !!!
-    [docToAdd addWindowController:self];
-    
-	self.document = docToAdd;
+	if (docToAdd.dataInMemory)
+		[self.textViewDocument setString:docToAdd.dataInMemory];
 
-    [self.textViewDocument setString:docToAdd.dataInMemory];
+	[super setDocument:docToAdd];
 }
 
 -(void)windowWillClose:(NSNotification*) notification {

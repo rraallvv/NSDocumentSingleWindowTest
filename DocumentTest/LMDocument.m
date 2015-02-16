@@ -32,19 +32,7 @@
 }
 
 -(void)makeWindowControllers {
-	LMWindowController *wc = [LMWindowController instance];
-
-	[wc addDocument:self];
-
-	//[[NSNotificationCenter defaultCenter] postNotificationName:LMDocumentNeedWindowNotification object:self];
-
-	/* LMWindowController *wc = [[LMWindowController alloc] initWithWindowNibName:@"LMMultipleDocumentsWindow"];
-
-	//[wc addDocument:self];
-
-	[self addWindowController:wc];
-
-	[wc showWindow:self]; */
+	[self addWindowController:[LMWindowController instance]];
 }
 
 + (BOOL)autosavesInPlace {
