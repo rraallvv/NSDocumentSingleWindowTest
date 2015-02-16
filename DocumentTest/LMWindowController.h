@@ -11,7 +11,7 @@
 
 @interface LMWindowController : NSWindowController<NSTextViewDelegate>
 
-+(id)instance;
++(LMWindowController *)instance;
 
 @property (assign) IBOutlet NSTextView *textViewDocument;
 

@@ -9,19 +9,26 @@
 #import "LMWindowController.h"
 #import "LMDocument.h"
 
-static id aInstance;
+static LMWindowController *aInstance = nil;
 
 @interface LMWindowController ()
 @end
 
 @implementation LMWindowController
 
--(void)awakeFromNib {
-    aInstance = self;
++(LMWindowController *)instance {
+	if (!aInstance) {
+		aInstance = [[LMWindowController alloc] initWithWindowNibName:@"Window"];
+	}
+    return aInstance;
 }
 
-+(id)instance {
-    return aInstance;
+- (void)windowDidLoad {
+	[super windowDidLoad];
+	LMDocument *doc = self.document;
+	if (doc) {
+		[self.textViewDocument setString:doc.dataInMemory];
+	}
 }
 
 -(void)setDocument:(LMDocument*)docToAdd {
