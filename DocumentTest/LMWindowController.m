@@ -14,20 +14,13 @@ static id aInstance;
 @interface LMWindowController ()
 @end
 
-@implementation LMWindowController {
-
-    BOOL _closeCalledInternally;
-}
+@implementation LMWindowController
 
 -(void)awakeFromNib {
-
     aInstance = self;
-
-    _closeCalledInternally = NO;
 }
 
 +(id)instance {
-
     return aInstance;
 }
 
@@ -85,10 +78,6 @@ static id aInstance;
 
 - (void)close {
 
-	if (_closeCalledInternally) {
-		_closeCalledInternally = NO;
-		[super close];
-	}
 }
 
 @end
